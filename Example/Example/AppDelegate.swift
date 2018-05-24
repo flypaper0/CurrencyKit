@@ -20,8 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AppLocale {
     func test4() {
         var funds: Money = 100.0
         print("Original 100eur(0% VAT): " + funds.description + " VAT amount: " + funds.VATamount.description)
-        funds = funds.VAT(24.0)
-        print("Modified 100eur(24% VAT): " + funds.description + " VAT amount: " + funds.VATamount.description)
+        funds = funds.VAT(24.5)
+        print("Modified 100eur(24.5% VAT): " + funds.description + " VAT amount: " + funds.VATamount.description)
         funds = funds.VAT(10.0)
         print("Re-modified with VAT 10%: " + funds.description + " VAT amount: " + funds.VATamount.description)
         funds = funds.VAT(0)
