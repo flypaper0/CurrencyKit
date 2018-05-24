@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:Example/Example.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:CurrencyKit/CurrencyKit.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../CommonKit/CommonKit/CommonKit.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../MathKit/MathKit/MathKit.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../LocaleKit/LocaleKit/LocaleKit.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../NumPad/NumPad/NumPad.xcodeproj">
+   </FileRef>
+</Workspace>
