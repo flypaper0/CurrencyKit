@@ -87,10 +87,18 @@ public final class CurrencyPad: UIInputView, UIInputViewAudioFeedback {
             let textInput: UITextInput = notification.object as? UITextInput,
             ( self == (textInput as? UITextField)?.inputView || self == (textInput as? UITextView)?.inputView )
             else { return }
+        
+        var delegate: CurrencyFieldDelegate? = textInput as? CurrencyFieldDelegate ?? textInput.inputDelegate as? CurrencyFieldDelegate
+        
+        if delegate == nil, let textField: UITextField = textInput as? UITextField, let delegate2: CurrencyFieldDelegate = textField.delegate as? CurrencyFieldDelegate {
+            delegate = delegate2
+        }
 
-        if let delegate: CurrencyFieldDelegate = textInput as? CurrencyFieldDelegate {
-            self.currencyField = delegate
-        } else { self.currencyField = nil }
+        if delegate == nil, let textView: UITextView = textInput as? UITextView, let delegate2: CurrencyFieldDelegate = textView.delegate as? CurrencyFieldDelegate {
+            delegate = delegate2
+        }
+
+        self.currencyField = delegate
         
         self.textInput = textInput
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UITextFieldTextDidBeginEditing, object: nil)
