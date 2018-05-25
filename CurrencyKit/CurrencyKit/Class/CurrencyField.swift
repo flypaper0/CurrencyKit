@@ -9,24 +9,13 @@
 import UIKit
 import LocaleKit
 import NumPad
-
-extension UITextField {
-    
-    public func warnSyntaxError() {
-        let origColor: CGColor? = self.layer.backgroundColor
-        self.layer.backgroundColor = UIColor.red.lighter(0.7).cgColor
-
-        UIView.animate(withDuration: TimeInterval(0.68), animations: {
-            self.layer.backgroundColor = origColor
-        })
-    }
-    
-}
+import CommonKit
 
 open class CurrencyField: UITextField, CurrencyFieldDelegate, UITextFieldDelegate {
     
     open var value: Money? = nil {
         didSet {
+            if ( oldValue == nil ) { self.value?.locale = self.locale }
             self.text = self.value?.description ?? nil
         }
     }
@@ -45,7 +34,7 @@ open class CurrencyField: UITextField, CurrencyFieldDelegate, UITextFieldDelegat
                 abs(value.rawValue) > Decimal(integerLiteral: self.maximum)
                 else { return }
 
-            value.rawValue = value.isNegative ? Decimal(integerLiteral: -self.maximum): Decimal(integerLiteral: self.maximum)
+            self.value?.rawValue = value.isNegative ? Decimal(integerLiteral: -self.maximum): Decimal(integerLiteral: self.maximum)
         }
     }
     
@@ -84,22 +73,29 @@ open class CurrencyField: UITextField, CurrencyFieldDelegate, UITextFieldDelegat
         return true
     }
     
+    public func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        self.value = nil
+        return false
+    }
+    
+    public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        return false
+    }
+
     open func pressNumber(number: Int) {
         
-        let _number: Double = Double(number)
-        
-        guard self.value != nil else {
-                self.value = Money(floatLiteral: Double(number) * 0.01)
-                return
+        guard let value: Money = self.value else {
+            self.value = Money(Decimal(number) * 0.01)
+            return
         }
-        let newValue: Decimal = ( self.value!.rawValue * 10 ) + Decimal(floatLiteral: self.value!.isNegative ? -( _number * 0.01 ) : ( _number * 0.01))
+        let newValue: Money = Money(( value.rawValue * 10 ) + ( value.isNegative ? -(Decimal(number) * 0.01) : (Decimal(number) * 0.01)))
         
-        guard self.maximum == 0 || abs(newValue) <= Decimal(integerLiteral: self.maximum) else {
+        guard self.maximum == 0 || abs(newValue.rawValue) <= Decimal(self.maximum) else {
             self.warnSyntaxError()
             return
         }
         
-        self.value =  Money(rawValue: newValue)
+        self.value = newValue
     }
     
     open func pressBackspace() {
@@ -118,7 +114,7 @@ open class CurrencyField: UITextField, CurrencyFieldDelegate, UITextFieldDelegat
 
         var newValue: Decimal = value.rawValue
         newValue = ( newValue - lastDecimal(of: newValue)) * 0.1
-        self.value = Money(floatLiteral: newValue.doubleValue)
+        self.value = Money(newValue)
     }
     
     open func pressSignToggle() {
@@ -129,11 +125,5 @@ open class CurrencyField: UITextField, CurrencyFieldDelegate, UITextFieldDelegat
         value.rawValue = -value.rawValue
         self.value = value
     }
-
-    public func textFieldShouldClear(_ textField: UITextField) -> Bool {
-        self.value = nil
-        return false
-    }
-
 
 }
