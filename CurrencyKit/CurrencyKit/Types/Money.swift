@@ -11,7 +11,7 @@ import CommonKit
 import LocaleKit
 import MathKit
 
-public struct Money: ExpressibleByFloatLiteral, ExpressibleByIntegerLiteral, SignedNumeric, RawRepresentable, CustomStringConvertible  {
+public struct Money: ExpressibleByFloatLiteral, ExpressibleByIntegerLiteral, SignedNumeric, RawRepresentable, CustomStringConvertible, Comparable, Equatable  {
     
     public typealias FloatLiteralType = Double
     public typealias IntegerLiteralType = Int
@@ -36,6 +36,9 @@ public struct Money: ExpressibleByFloatLiteral, ExpressibleByIntegerLiteral, Sig
     
     public var magnitude: Decimal { get { return abs(self.rawValue) }}
     
+    public static var zero: Money {
+        get { return Money(0) }}
+    
     public init(rawValue: Decimal) {
         self._rawValue = rawValue.rounded(to: 2)
     }
@@ -50,6 +53,30 @@ public struct Money: ExpressibleByFloatLiteral, ExpressibleByIntegerLiteral, Sig
     
     public init(integerLiteral value: Int) {
         self._rawValue = Decimal(value)
+    }
+    
+    public init(_ value: Int) {
+        self._rawValue = Decimal(value)
+    }
+
+    public init(_ value: Float) {
+        self._rawValue = Decimal(Double(value).rounded(to: 2))
+    }
+    
+    public init(_ value: CGFloat) {
+        self._rawValue = Decimal(Double(value).rounded(to: 2))
+    }
+
+    public init(_ value: Double) {
+        self._rawValue = Decimal(value.rounded(to: 2))
+    }
+    
+    public init(_ value: Decimal) {
+        self._rawValue = value.rounded(to: 2)
+    }
+    
+    public init(_ value: Money) {
+        self._rawValue = value._rawValue.rounded(to: 2)
     }
     
     static public func * (lhs: Money, rhs: Money) -> Money {
@@ -74,5 +101,9 @@ public struct Money: ExpressibleByFloatLiteral, ExpressibleByIntegerLiteral, Sig
     
     static public func -= (lhs: inout Money, rhs: Money) {
         lhs.rawValue = lhs.rawValue - rhs.rawValue
-    }    
+    }
+
+    public static func < (lhs: Money, rhs: Money) -> Bool {
+        return lhs.rawValue < rhs.rawValue
+    }
 }
