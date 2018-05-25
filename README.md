@@ -15,7 +15,7 @@ Many things. For once, currency rates are not supported at all. Currency of valu
 Check Daniel Thorpe's Money: https://github.com/danthorpe/Money
 
 ### What type of storage is used for storing money value?
-I used Decimal.
+I used Decimal. And Money struct conforms to Codable.
 
 ### Guidance?
 Check simple example and available functions, this isn't that complicated.
