@@ -11,7 +11,7 @@ import CommonKit
 import LocaleKit
 import MathKit
 
-public struct Money: ExpressibleByFloatLiteral, ExpressibleByIntegerLiteral, SignedNumeric, RawRepresentable, CustomStringConvertible, Comparable, Equatable  {
+public struct Money: ExpressibleByFloatLiteral, ExpressibleByIntegerLiteral, SignedNumeric, RawRepresentable, CustomStringConvertible, Comparable, Equatable, Encodable, Decodable  {
     
     public typealias FloatLiteralType = Double
     public typealias IntegerLiteralType = Int
@@ -38,6 +38,10 @@ public struct Money: ExpressibleByFloatLiteral, ExpressibleByIntegerLiteral, Sig
     
     public static var zero: Money {
         get { return Money(0) }}
+    
+    enum CodingKeys: String, CodingKey {
+        case _rawValue = "rawValue"
+    }
     
     public init(rawValue: Decimal) {
         self._rawValue = rawValue.rounded(to: 2)
