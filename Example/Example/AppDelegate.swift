@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AppLocale {
 
     var regionCode: String = "fi_FI"
     
-    func test4() {
+    func test() {
         var funds: Money = 100.0
         print("Original 100eur(0% VAT): " + funds.description + " VAT amount: " + funds.VATamount.description)
         funds = funds.VAT(24.5)
@@ -28,6 +28,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AppLocale {
         print("Re-modified to VAT 0%:" + funds.description + " VAT amount: " + funds.VATamount.description)
     }
     
+    func test2() {
+        var cart: Cart = Cart()
+        cart.append(CartItem(name: "Item1", price: 15.0))
+        cart.append(CartItem(name: "Item2", price: 10.0, VAT: 24.0))
+        cart.append(CartItem(name: "Item3", count: 2, price: 15.0, VAT: 24.0))
+        
+        cart.forEach {
+            print($0.name + "\t| " + $0.VAT_percent.description + "% \t| " + $0.VATamount.description + "\t| " + $0.VAT0.description + "\t| " + $0.total.description)
+        }
+     
+        print("\t\t\t\t  " + cart.VATamount.description + "\t| " + cart.VAT0.description + "\t| " + cart.total.description)
+        
+    }
     
     lazy var window: UIWindow? = {
         let _window: UIWindow = UIWindow(frame: UIScreen.main.bounds)
@@ -41,7 +54,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AppLocale {
         
         let _ = self.window
 
-        self.test4()
+        self.test()
+        print("-----------------")
+        self.test2()
         
         // Override point for customization after application launch.
         return true
