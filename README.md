@@ -4,7 +4,13 @@ Swift 4.0
 
 ![CurrencyKit](https://github.com/oskarirauta/CurrencyKit/raw/master/screenshot.png)
 
-### What can this be used for?
+### What keyboard is in the picture?
+It is CurrencyPad provided by this framework. Works on both, iPad and iPhone.
+
+### Keyboard works a bit like a calculator, could I get cursor and make it work by standard keyboard?
+Sure you can, but then you will need to implement this by on your own. I am happy with it like this, so I made it like this.
+
+### What can this framework be used for?
  - Money calculations with currencies which have cents/pennies with 2 digits.
  - Presentation of Money value with locale
  - Contains a UI element based on textfield which allows entering a monetary value.
