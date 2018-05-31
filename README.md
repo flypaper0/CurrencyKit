@@ -19,13 +19,20 @@ Check Daniel Thorpe's Money: https://github.com/danthorpe/Money
 ### What type of storage is used for storing money value?
 I used Decimal. And Money struct conforms to Codable.
 
-### Can I combine different Money structs?
-Yes and no. If VAT is 0 then no problems, but if VAT was already set, there most likely will be issues.
+### Can I sum different Money structs?
+Yes. Money(10.0) + Money(20.0) = Money(30.0)
 
-### Anything available for that?
-Yes, types CartItem and Cart. You can add CartItems (which is a container for Money type and some other general types usefull for this purpose) to Cart, which can have multiple VATs at same time and provide wanted outcome.
-Cart is a typealias for [CartItem] with some functionality for the cause.
+### Is VAT supported?
+Yes, in Cart/CartItem. Money is always money, so it doesn't care about if one part of it is used for taxes or something.
+With VAT, you can get amount of VAT for sum, VAT0 sum, and sum with VAT multiplied by amount of items. And ofcourse, used VAT percentage of CartItem.
 
+### What else is in CartItem besides price?
+Item name and amount.
+
+### Is it precise?
+I have done my best to provide precise values. VAT percentage has support for 1 decimal and Money has support for 2 decimals.
+
+### Can I see some tests?
 Here is a list output from sample app:
 ```
 Item1	| 15,00 €	| 1		  |  0%	| 0,00 €	| 15,00 €	| 15,00 €
