@@ -25,6 +25,13 @@ extension Money {
             return self - self.VAT(0)
         }
     }
+
+    public var VAT0: Money {
+        get {
+            guard self.rawValue != 0, self._vat_percent.rounded(to: 1) != 0 else { return self }
+            return Money(self.rawValue - self.VATamount.rawValue)
+        }
+    }
     
     public func VAT(_ percent: Decimal) -> Money {
         guard percent.rounded(to: 1) > 0 else {

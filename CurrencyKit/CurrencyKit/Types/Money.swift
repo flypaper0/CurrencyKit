@@ -11,7 +11,7 @@ import CommonKit
 import LocaleKit
 import MathKit
 
-public struct Money: ExpressibleByFloatLiteral, ExpressibleByIntegerLiteral, SignedNumeric, RawRepresentable, CustomStringConvertible, Comparable, Equatable, Encodable, Decodable  {
+public struct Money: ExpressibleByFloatLiteral, ExpressibleByIntegerLiteral, SignedNumeric, RawRepresentable, CustomStringConvertible, Comparable, Equatable, Encodable, Decodable, PriceProtocol, MoneyCompatible, VATProtocol {
     
     public typealias FloatLiteralType = Double
     public typealias IntegerLiteralType = Int
@@ -25,6 +25,16 @@ public struct Money: ExpressibleByFloatLiteral, ExpressibleByIntegerLiteral, Sig
         get { return self._rawValue.rounded(to: 2) }
         set { self._rawValue = newValue.rounded(to: 2) }
     }
+    
+    public var total: Money { get { return self }}
+    
+    public var sum: Decimal {
+        get { return self.rawValue }
+        set { self.rawValue = newValue }
+    }
+    
+    public var convertedMoney: Money { get { return self }}
+    
     public var locale: Locale = Locale.appLocale
     
     public var doubleValue: Double { get { return self.rawValue.doubleValue }}
@@ -81,6 +91,10 @@ public struct Money: ExpressibleByFloatLiteral, ExpressibleByIntegerLiteral, Sig
     
     public init(_ value: Money) {
         self._rawValue = value._rawValue.rounded(to: 2)
+    }
+    
+    public init(_ value: MoneyCompatible) {
+        self._rawValue = value.convertedMoney._rawValue.rounded(to: 2)
     }
     
     static public func * (lhs: Money, rhs: Money) -> Money {
