@@ -14,6 +14,7 @@ public struct CartItem: PriceProtocol, MoneyCompatible, VATProtocol {
     public var unit: String? = nil
     public var price: Money
     
+    public var single: Money { get { return self.price.VAT0 }}
     public var total: Money { get { return Money(self.sum) }}
     public var sum: Decimal { get { return (self.price.sum * Decimal(self.count)).rounded(to: 2) }}
     public var VAT_percent: Decimal { get { return self.price.VAT_percent }}
