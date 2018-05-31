@@ -32,13 +32,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AppLocale {
         var cart: Cart = Cart()
         cart.append(CartItem(name: "Item1", price: 15.0))
         cart.append(CartItem(name: "Item2", price: 10.0, VAT: 24.0))
-        cart.append(CartItem(name: "Item3", count: 2, price: 15.0, VAT: 24.0))
+        cart.append(CartItem(name: "Item3", count: 2, unit: "pcs", price: 15.0, VAT: 24.0))
+        cart.append(CartItem(name: "Item4", count: 0, price: 20.0))
+        cart.append(CartItem(name: "Item5", count: 0, price: 9.0, VAT: 24.0))
         
         cart.forEach {
-            print($0.name + "\t| " + $0.VAT_percent.description + "% \t| " + $0.VATamount.description + "\t| " + $0.VAT0.description + "\t| " + $0.total.description)
+            var line: String = $0.name + "\t| "
+            line += $0.single.description + "\t| "
+            line += String($0.count) + ( $0.unit ?? "\t" ) + "\t| "
+            line += $0.VAT_percent.description + "%\t| "
+            line += $0.VATamount.description + "\t| "
+            line += $0.VAT0.description + "\t| "
+            line += $0.total.description
+            print(line)
         }
      
-        print("\t\t\t\t  " + cart.VATamount.description + "\t| " + cart.VAT0.description + "\t| " + cart.total.description)
+        print("\t\t\t\t\t\t\t\t\t  " + cart.VATamount.description + "\t| " + cart.VAT0.description + "\t| " + cart.total.description)
         
     }
     
