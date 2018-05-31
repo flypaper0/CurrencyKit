@@ -2,7 +2,7 @@
 Money presentation Framework
 Swift 4.0
 
-![CurrencyKit](https://github.com/oskarirauta/CurrencyKit/raw/master/Screen%20Shot%202018-06-01%20at%201.13.18.png)
+![CurrencyKit](https://github.com/oskarirauta/CurrencyKit/raw/master/screenshot.png)
 
 ### What can this be used for?
  - Money calculations with currencies which have cents/pennies with 2 digits.
