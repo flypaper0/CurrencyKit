@@ -58,6 +58,10 @@ It's built like this:
         cart.append(CartItem(name: "Item4", count: 0, price: 20.0))
         cart.append(CartItem(name: "Item5", count: 0, price: 9.0, VAT: 24.0))
 ```
+
+### I don't see license anywhere?
+Yes, this is free. Thank you, star, credits at your work, or something like that would be appreciated but ofcourse it's completely optional and up to you :)
+
 ### Guidance?
 Check simple example and available functions, this isn't that complicated.
 Maybe better example and some guidance might be added later.
