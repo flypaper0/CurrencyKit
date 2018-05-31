@@ -2,6 +2,7 @@
 Money presentation Framework
 Swift 4.0
 
+### Screenshot (from provided sample)
 ![CurrencyKit](https://github.com/oskarirauta/CurrencyKit/raw/master/screenshot.png)
 
 ### What keyboard is in the picture?
