@@ -15,18 +15,13 @@
 		6E9219FE20B71D79000B1EC9 /* NumPad.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E9219FD20B71D78000B1EC9 /* NumPad.xcassets */; };
 		6E921A0020B71D86000B1EC9 /* CurrencyKit.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E9219FF20B71D85000B1EC9 /* CurrencyKit.xcassets */; };
 		6E921A0420B71E61000B1EC9 /* CurrencyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E49987720B4869C008D7ACD /* CurrencyKit.framework */; };
-		6E921A0720B71E6D000B1EC9 /* MathKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E921A0620B71E6D000B1EC9 /* MathKit.framework */; };
-		6E921A0920B71E71000B1EC9 /* CommonKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E921A0820B71E71000B1EC9 /* CommonKit.framework */; };
 		6E921A0B20B71E75000B1EC9 /* NumPad.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E921A0A20B71E75000B1EC9 /* NumPad.framework */; };
-		6E921A0C20B71E96000B1EC9 /* LocaleKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E49988420B4C4AE008D7ACD /* LocaleKit.framework */; };
 		6E921A0D20B71E96000B1EC9 /* LocaleKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6E49988420B4C4AE008D7ACD /* LocaleKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6E921A1120B71EC3000B1EC9 /* CurrencyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E49987720B4869C008D7ACD /* CurrencyKit.framework */; };
 		6E921A1220B71EC3000B1EC9 /* CurrencyKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6E49987720B4869C008D7ACD /* CurrencyKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6E921A1320B71EC7000B1EC9 /* CommonKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E921A0820B71E71000B1EC9 /* CommonKit.framework */; };
 		6E921A1420B71EC7000B1EC9 /* CommonKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6E921A0820B71E71000B1EC9 /* CommonKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6E921A1520B71ECA000B1EC9 /* MathKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E921A0620B71E6D000B1EC9 /* MathKit.framework */; };
 		6E921A1620B71ECA000B1EC9 /* MathKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6E921A0620B71E6D000B1EC9 /* MathKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6E921A1720B71ED1000B1EC9 /* NumPad.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E921A0A20B71E75000B1EC9 /* NumPad.framework */; };
 		6E921A1820B71ED1000B1EC9 /* NumPad.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6E921A0A20B71E75000B1EC9 /* NumPad.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
@@ -71,14 +66,9 @@
 			files = (
 				6E921A1320B71EC7000B1EC9 /* CommonKit.framework in Frameworks */,
 				6E921A0B20B71E75000B1EC9 /* NumPad.framework in Frameworks */,
-				6E921A0920B71E71000B1EC9 /* CommonKit.framework in Frameworks */,
-				6E921A1720B71ED1000B1EC9 /* NumPad.framework in Frameworks */,
 				6E921A1520B71ECA000B1EC9 /* MathKit.framework in Frameworks */,
-				6E921A0720B71E6D000B1EC9 /* MathKit.framework in Frameworks */,
 				6E921A0420B71E61000B1EC9 /* CurrencyKit.framework in Frameworks */,
-				6E921A1120B71EC3000B1EC9 /* CurrencyKit.framework in Frameworks */,
 				6E49988520B4C4AE008D7ACD /* LocaleKit.framework in Frameworks */,
-				6E921A0C20B71E96000B1EC9 /* LocaleKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,7 +146,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Oskari Rauta";
 				TargetAttributes = {
 					6E49986020B4868F008D7ACD = {
@@ -271,7 +261,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -325,7 +315,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;

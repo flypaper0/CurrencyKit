@@ -18,17 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AppLocale {
     var regionCode: String = "fi_FI"
     
     func test() {
-        var funds: Money = 100.0
-        print("Original 100eur(0% VAT): " + funds.description + " VAT amount: " + funds.VATamount.description)
-        funds = funds.VAT(24.5)
-        print("Modified 100eur(24.5% VAT): " + funds.description + " VAT amount: " + funds.VATamount.description)
-        funds = funds.VAT(10.0)
-        print("Re-modified with VAT 10%: " + funds.description + " VAT amount: " + funds.VATamount.description)
-        funds = funds.VAT(0)
-        print("Re-modified to VAT 0%:" + funds.description + " VAT amount: " + funds.VATamount.description)
-    }
-    
-    func test2() {
         var cart: Cart = Cart()
         cart.append(CartItem(name: "Item1", price: 15.0))
         cart.append(CartItem(name: "Item2", price: 10.0, VAT: 24.0))
@@ -37,17 +26,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AppLocale {
         cart.append(CartItem(name: "Item5", count: 0, price: 9.0, VAT: 24.0))
         
         cart.forEach {
-            var line: String = $0.name + "\t| "
-            line += $0.single.description + "\t| "
-            line += String($0.count) + ( $0.unit ?? "\t" ) + "\t| "
+            var line: String = ( $0.name ?? "--" ) + "\t| "
+            line += $0.price.description + "\t| "
+            line += $0.count.description + ( $0.unit ?? "\t" ) + "\t| "
             line += $0.VAT_percent.description + "%\t| "
-            line += $0.VATamount.description + "\t| "
-            line += $0.VAT0.description + "\t| "
+            line += $0.VAT.description + "\t| "
+            line += $0.totalVAT0.description + "\t| "
             line += $0.total.description
             print(line)
         }
      
-        print("\t\t\t\t\t\t\t\t\t  " + cart.VATamount.description + "\t| " + cart.VAT0.description + "\t| " + cart.total.description)
+        print("\t\t\t\t\t\t\t\t\t  " + cart.VAT.description + "\t| " + cart.totalVAT0.description + "\t| " + cart.total.description)
         
     }
     
@@ -64,8 +53,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AppLocale {
         let _ = self.window
 
         self.test()
-        print("-----------------")
-        self.test2()
         
         // Override point for customization after application launch.
         return true

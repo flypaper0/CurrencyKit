@@ -9,25 +9,5 @@
 import Foundation
 
 public protocol MoneyCompatible {
-    var convertedMoney: Money { get }
-}
-
-extension Double: MoneyCompatible {
-    
-    public var convertedMoney: Money { get { return Money(self) }}
-}
-
-extension Float: MoneyCompatible {
-    
-    public var convertedMoney: Money { get { return Money(self) }}
-}
-
-extension CGFloat: MoneyCompatible {
-    
-    public var convertedMoney: Money { get { return Money(self) }}
-}
-
-extension Int: MoneyCompatible {
-    
-    public var convertedMoney: Money { get { return Money(self) }}
+    var asMoney: Money { get }
 }

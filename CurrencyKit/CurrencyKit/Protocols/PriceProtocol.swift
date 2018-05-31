@@ -8,13 +8,8 @@
 
 import Foundation
 
-public protocol PriceProtocol {
+public protocol PriceProtocol {    
+    var totalVAT0: Money { get }
     var total: Money { get }
-    var sum: Decimal { get }
-    var VATamount: Money { get }
-    var VAT0: Money { get }
-}
-
-public protocol VATProtocol {
-    var VAT_percent: Decimal { get }
+    var VAT: Money { get }
 }

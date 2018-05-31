@@ -84,6 +84,8 @@ open class CurrencyField: UITextField, CurrencyFieldDelegate, UITextFieldDelegat
 
     open func pressNumber(number: Int) {
         
+        guard self.value != 0 || number != 0 else { return }
+        
         guard let value: Money = self.value else {
             self.value = Money(Decimal(number) * 0.01)
             return
@@ -96,6 +98,7 @@ open class CurrencyField: UITextField, CurrencyFieldDelegate, UITextFieldDelegat
         }
         
         self.value = newValue
+        self.sendActions(for: .valueChanged)
     }
     
     open func pressBackspace() {
@@ -115,6 +118,7 @@ open class CurrencyField: UITextField, CurrencyFieldDelegate, UITextFieldDelegat
         var newValue: Decimal = value.rawValue
         newValue = ( newValue - lastDecimal(of: newValue)) * 0.1
         self.value = Money(newValue)
+        self.sendActions(for: .valueChanged)
     }
     
     open func pressSignToggle() {
@@ -124,6 +128,7 @@ open class CurrencyField: UITextField, CurrencyFieldDelegate, UITextFieldDelegat
             else { return }
         value.rawValue = -value.rawValue
         self.value = value
+        self.sendActions(for: .valueChanged)
     }
 
 }
