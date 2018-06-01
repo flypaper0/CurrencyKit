@@ -18,12 +18,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AppLocale {
     var regionCode: String = "fi_FI"
     
     func test() {
+        var wallet: Money = Money(100.0)
         var cart: Cart = Cart()
         cart.append(CartItem(name: "Item1", price: 15.0))
         cart.append(CartItem(name: "Item2", price: 10.0, VAT: 24.0))
         cart.append(CartItem(name: "Item3", count: 2, unit: "pcs", price: 15.0, VAT: 24.0))
         cart.append(CartItem(name: "Item4", count: 0, price: 20.0))
         cart.append(CartItem(name: "Item5", count: 0, price: 9.0, VAT: 24.0))
+        cart.append(CartItem(name: "Item6", count: 0, price: 1.0))
+        
+        cart[3].VAT_percent = 15.5
+        cart[5].count = 1
         
         cart.forEach {
             var line: String = ( $0.name ?? "--" ) + "\t| "
@@ -37,6 +42,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AppLocale {
         }
      
         print("\t\t\t\t\t\t\t\t\t  " + cart.VAT.description + "\t| " + cart.totalVAT0.description + "\t| " + cart.total.description)
+        
+        
+        print("Wallet contains: " + wallet.description)
+        
+        wallet -= Money(cart)
+        
+        print("After purchase of " + cart.total.description + ", wallet contains: " + wallet.description)
         
     }
     

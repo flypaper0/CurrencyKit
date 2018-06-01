@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol PriceProtocol {    
+public protocol PriceProtocol {
     var totalVAT0: Money { get }
     var total: Money { get }
     var VAT: Money { get }
