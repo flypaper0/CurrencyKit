@@ -2,9 +2,16 @@
 Money presentation Framework
 Swift 4.0
 
+### Screenshot (from provided sample)
 ![CurrencyKit](https://github.com/oskarirauta/CurrencyKit/raw/master/screenshot.png)
 
-### What can this be used for?
+### What keyboard is in the picture?
+It is CurrencyPad provided by this framework. Works on both, iPad and iPhone.
+
+### Keyboard works a bit like a calculator, could I get cursor and make it work by standard keyboard?
+Sure you can, but then you will need to implement this by on your own. I am happy with it like this, so I made it like this.
+
+### What can this framework be used for?
  - Money calculations with currencies which have cents/pennies with 2 digits.
  - Presentation of Money value with locale
  - Contains a UI element based on textfield which allows entering a monetary value.
@@ -19,13 +26,20 @@ Check Daniel Thorpe's Money: https://github.com/danthorpe/Money
 ### What type of storage is used for storing money value?
 I used Decimal. And Money struct conforms to Codable.
 
-### Can I combine different Money structs?
-Yes and no. If VAT is 0 then no problems, but if VAT was already set, there most likely will be issues.
+### Can I sum different Money structs?
+Yes. Money(10.0) + Money(20.0) = Money(30.0)
 
-### Anything available for that?
-Yes, types CartItem and Cart. You can add CartItems (which is a container for Money type and some other general types usefull for this purpose) to Cart, which can have multiple VATs at same time and provide wanted outcome.
-Cart is a typealias for [CartItem] with some functionality for the cause.
+### Is VAT supported?
+Yes, in Cart/CartItem. Money is always money, so it doesn't care about if one part of it is used for taxes or something.
+With VAT, you can get amount of VAT for sum, VAT0 sum, and sum with VAT multiplied by amount of items. And ofcourse, used VAT percentage of CartItem.
 
+### What else is in CartItem besides price?
+Item name and amount.
+
+### Is it precise?
+I have done my best to provide precise values. VAT percentage has support for 1 decimal and Money has support for 2 decimals.
+
+### Can I see some tests?
 Here is a list output from sample app:
 ```
 Item1	| 15,00 €	| 1		  |  0%	| 0,00 €	| 15,00 €	| 15,00 €
@@ -45,6 +59,10 @@ It's built like this:
         cart.append(CartItem(name: "Item4", count: 0, price: 20.0))
         cart.append(CartItem(name: "Item5", count: 0, price: 9.0, VAT: 24.0))
 ```
+
+### I don't see license anywhere?
+Yes, this is free. Thank you, star, credits at your work, or something like that would be appreciated but ofcourse it's completely optional and up to you :)
+
 ### Guidance?
 Check simple example and available functions, this isn't that complicated.
 Maybe better example and some guidance might be added later.
