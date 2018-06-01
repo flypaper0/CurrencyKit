@@ -33,6 +33,7 @@ public struct Money: ExpressibleByFloatLiteral, ExpressibleByIntegerLiteral, Sig
     public var stringValue: String { get { return self.rawValue.description }}
     public var nsnumber: NSNumber { get { return NSNumber(value: self.rawValue.doubleValue.rounded(to: 2)) }}
     public var isNegative: Bool { get { return self.rawValue < 0 }}
+    public var isSignMinus: Bool { get { return self.rawValue.isSignMinus }}
     
     public var description: String { get { return self.locale.currencyFormatter.string(from: self.nsnumber)! }}
     
